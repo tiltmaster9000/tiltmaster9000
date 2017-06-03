@@ -1,6 +1,9 @@
 group 'xyz.tiltmaster'
 version '0.1'
 
+mainClassName = 'xyz.tiltmaster.Main'
+sourceCompatibility = 1.8
+
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'application'
@@ -19,17 +22,7 @@ buildscript {
     repositories {
         jcenter()
     }
-
-    dependencies {
-        classpath "org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.6.+"
-    }
 }
-
-mainClassName = 'xyz.tiltmaster.Main'
-
-
-// Compatible with Java 8
-sourceCompatibility = 1.8
 
 dependencies {
 }
