@@ -1,3 +1,8 @@
-
+# IDE Settings
 .idea/
-tiltmaster9000.iml
+*.iml
+
+# Gradle
+.gradle
+*.ipr
+*.iws
