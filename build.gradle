@@ -25,6 +25,9 @@ buildscript {
 }
 
 dependencies {
+
+    compile group: 'com.1stleg', name: 'jnativehook', version: '2.1.0'
+
 }
 
 test.dependsOn processTestResources
