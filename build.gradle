@@ -12,13 +12,11 @@ configurations.all {
 allprojects {
     repositories {
         jcenter()
-        maven { url "https://jitpack.io" }
     }
 }
 
 buildscript {
     repositories {
-        //mavenCentral()
         jcenter()
     }
 
