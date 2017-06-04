@@ -4,10 +4,10 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 
 
-public class Typer {
-    private Robot robot;
+abstract class Typer {
+    protected Robot robot;
 
-    public Typer() {
+    Typer() {
         try {
             this.robot = new Robot();
         } catch (AWTException e) {
@@ -15,23 +15,22 @@ public class Typer {
         }
     }
 
-    public void type(String string) {
+    void type(final String string) {
         this.pressEnter();
 
         for (char c : string.toCharArray()) {
-            int keyCode = KeyEvent.getExtendedKeyCodeForChar(c);
+            final int keyCode = KeyEvent.getExtendedKeyCodeForChar(c);
             if (KeyEvent.CHAR_UNDEFINED == keyCode) {
                 throw new RuntimeException("Key code not found for character '" + c + "'");
             }
 
             switch (c) {
                 case '?':
-                    // pressQuestionMark();
-                    System.out.println("No question mark implemented at this time");
+                    this.pressQuestionMark();
                 case '!':
-                    pressExlamationMark();
+                    this.pressExlamationMark();
                 default:
-                    pressNormalKey(c, keyCode);
+                    this.pressNormalKey(c, keyCode);
             }
         }
 
@@ -45,7 +44,7 @@ public class Typer {
         robot.keyRelease(KeyEvent.VK_ENTER);
     }
 
-    private void pressNormalKey(char c, int keyCode) {
+    private void pressNormalKey(final char c, final int keyCode) {
         if (Character.isUpperCase(c)) {
             robot.keyPress(KeyEvent.VK_SHIFT);
         }
@@ -59,23 +58,11 @@ public class Typer {
         robot.delay(this.generateRandomPressTime());
     }
 
-    private void pressExlamationMark() {
-        robot.keyPress(KeyEvent.VK_SHIFT);
-        robot.keyPress(KeyEvent.VK_1);
-        robot.delay(this.generateRandomPressTime());
-        robot.keyRelease(KeyEvent.VK_SHIFT);
-        robot.keyRelease(KeyEvent.VK_1);
-    }
+    protected abstract void pressExlamationMark();
 
-    private void pressQuestionMark() {
-        robot.keyPress(KeyEvent.VK_SHIFT);
-        //robot.keyPress(KeyEvent.);
-        robot.delay(this.generateRandomPressTime());
-        robot.keyRelease(KeyEvent.VK_SHIFT);
-        // robot.keyRelease(KeyEvent.VK_EXCLAMATION_MARK);
-    }
+    protected abstract void pressQuestionMark();
 
-    private int generateRandomPressTime() {
+    protected int generateRandomPressTime() {
         return 50;
     }
 }

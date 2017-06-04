@@ -9,13 +9,24 @@ public class OutputListener implements IListener<String> {
     private BlockingQueue<String> blockingQueue;
     private Typer typer;
 
-    public OutputListener() {
+    public OutputListener(final TyperLocale locale) {
         this.blockingQueue = new LinkedBlockingDeque<>();
-        this.typer = new Typer();
+        this.typer = chooseTyper(locale);
+    }
+
+    private Typer chooseTyper(final TyperLocale locale) {
+        switch (locale) {
+            case US:
+                return new USTyper();
+            case DE:
+                return new DETyper();
+            default:
+                return new USTyper();
+        }
     }
 
     @Override
-    public void activate(String string) {
+    public void activate(final String string) {
         blockingQueue.add(string);
     }
 
