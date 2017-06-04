@@ -20,7 +20,7 @@ public class OutputListener implements IListener<String> {
     }
 
     public void start() {
-        while (!Thread.interrupted()) {
+        while (!Thread.currentThread().isInterrupted()) {
             String string = null;
             try {
                 string = blockingQueue.take();
