@@ -1,7 +1,7 @@
 package xyz.tiltmaster;
 
 import xyz.tiltmaster.output.OutputListener;
-import xyz.tiltmaster.output.TyperLocale;
+import xyz.tiltmaster.output.typer.TyperLocale;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

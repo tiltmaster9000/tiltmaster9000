@@ -1,10 +1,10 @@
-package xyz.tiltmaster.output;
+package xyz.tiltmaster.output.typer;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
 
-abstract class Typer {
+public abstract class Typer {
     protected Robot robot;
 
     Typer() {
@@ -15,7 +15,7 @@ abstract class Typer {
         }
     }
 
-    void type(final String string) {
+    public void type(final String string) {
         this.pressEnter();
 
         for (char c : string.toCharArray()) {

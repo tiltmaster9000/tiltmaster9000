@@ -1,5 +1,9 @@
 package xyz.tiltmaster.output;
 
+import xyz.tiltmaster.output.typer.DETyper;
+import xyz.tiltmaster.output.typer.Typer;
+import xyz.tiltmaster.output.typer.TyperLocale;
+import xyz.tiltmaster.output.typer.USTyper;
 import xyz.tiltmaster.util.IListener;
 
 import java.util.concurrent.BlockingQueue;

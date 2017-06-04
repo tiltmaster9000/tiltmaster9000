@@ -1,8 +1,10 @@
-package xyz.tiltmaster.output;
+package xyz.tiltmaster.output.typer;
+
+import xyz.tiltmaster.output.typer.Typer;
 
 import java.awt.event.KeyEvent;
 
-class USTyper extends Typer {
+public class DETyper extends Typer {
 
     @SuppressWarnings("Duplicates")
     @Override
@@ -17,9 +19,9 @@ class USTyper extends Typer {
     @Override
     protected void pressQuestionMark() {
         robot.keyPress(KeyEvent.VK_SHIFT);
-        robot.keyPress(KeyEvent.VK_SLASH);
+        //robot.keyPress(KeyEvent.);
         robot.delay(this.generateRandomPressTime());
-        robot.keyRelease(KeyEvent.VK_SLASH);
-        robot.keyRelease(KeyEvent.VK_EXCLAMATION_MARK);
+        robot.keyRelease(KeyEvent.VK_SHIFT);
+        // robot.keyRelease(KeyEvent.VK_EXCLAMATION_MARK);
     }
 }

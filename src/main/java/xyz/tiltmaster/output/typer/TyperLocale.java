@@ -1,4 +1,4 @@
-package xyz.tiltmaster.output;
+package xyz.tiltmaster.output.typer;
 
 public enum TyperLocale {
     US, DE
