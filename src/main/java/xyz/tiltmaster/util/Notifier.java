@@ -14,8 +14,6 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  * </p>
  *
  * @param <E> The type of event to fire.
- * @author Julian Brendl
- * @version 1.0
  */
 public abstract class Notifier<E> {
     private final Collection<IListener<E>> listeners = new ConcurrentLinkedQueue<>();

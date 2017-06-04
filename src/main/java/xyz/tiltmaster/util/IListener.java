@@ -8,9 +8,6 @@ package xyz.tiltmaster.util;
  *     type Event. The IListener is the observer in this case. It registers with the Notifier and receives messages sent
  *     from the Notifier through the receive method.
  * </p>
- *
- * @author Julian Brendl
- * @version 1.0
  */
 public interface IListener<T> {
     /**

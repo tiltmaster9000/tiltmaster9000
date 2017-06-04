@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 /**
  * The Typer types a message into the system.
  */
-abstract class Typer {
+public abstract class Typer {
     Robot robot;
 
     /**
@@ -23,9 +23,9 @@ abstract class Typer {
     /**
      * Type the given string.
      *
-     * @param string The string to type
+     * @param string The string to type.
      */
-    void type(final String string) {
+    public void type(final String string) {
         this.pressEnter();
 
         for (char c : string.toCharArray()) {
@@ -60,9 +60,10 @@ abstract class Typer {
     }
 
     /**
+     * Implement a virtual forward slash key press.
      *
-     * @param c
-     * @param keyCode
+     * @param c The character that should be pressed.
+     * @param keyCode The keyCode of that key that should pressed.
      */
     private void pressNormalKey(final char c, final int keyCode) {
         if (Character.isUpperCase(c)) {
@@ -94,10 +95,11 @@ abstract class Typer {
     abstract void pressQuestionMark();
 
     /**
+     * Generate a random key press time that should be about realistic to a real typing speed.
      *
-     * @return
+     * @return A random key press time that should be about realistic to a real typing speed.
      */
     int generateRandomPressTime() {
-        return 50;
+        return (int) (Math.random() * 50) + 10;
     }
 }

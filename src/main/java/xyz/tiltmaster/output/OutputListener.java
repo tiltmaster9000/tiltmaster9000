@@ -10,15 +10,25 @@ import java.util.Locale;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 
+/**
+ * Manages the oup
+ */
 public class OutputListener implements IListener<String> {
     private BlockingQueue<String> blockingQueue;
     private Typer typer;
 
+    /**
+     *
+     */
     public OutputListener() {
         this.blockingQueue = new LinkedBlockingDeque<>();
         this.typer = chooseTyper();
     }
 
+    /**
+     *
+     * @return
+     */
     private Typer chooseTyper() {
         // Find keyboard type and choose correct typer
         InputContext context = InputContext.getInstance();
@@ -39,6 +49,9 @@ public class OutputListener implements IListener<String> {
         blockingQueue.add(event);
     }
 
+    /**
+     * Starts the OutputListener.
+     */
     public void run() {
         while (!Thread.currentThread().isInterrupted()) {
             String string = null;
