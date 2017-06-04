@@ -14,14 +14,16 @@ import java.util.concurrent.LinkedBlockingDeque;
  * Manages the oup
  */
 public class OutputListener implements IListener<String> {
-    private BlockingQueue<String> blockingQueue;
-    private Typer typer;
+    private final BlockingQueue<String> blockingQueue;
+    private final ActivityNotifier activityNotifier;
+    private final Typer typer;
 
     /**
      *
      */
-    public OutputListener() {
+    public OutputListener(ActivityNotifier activityNotifier) {
         this.blockingQueue = new LinkedBlockingDeque<>();
+        this.activityNotifier = activityNotifier;
         this.typer = chooseTyper();
     }
 
@@ -35,12 +37,12 @@ public class OutputListener implements IListener<String> {
         String locale = context.getLocale().toLanguageTag();
 
         if (locale.contains(Locale.ENGLISH.toLanguageTag())) {
-            return new USTyper();
+            return new USTyper(activityNotifier);
         } else if (locale.contains(Locale.GERMAN.toLanguageTag())) {
-            return new DETyper();
+            return new DETyper(activityNotifier);
         } else {
             System.out.println("No typer exists for locale: " + locale + ". US typer was chosen by default.");
-            return new USTyper();
+            return new USTyper(activityNotifier);
         }
     }
 

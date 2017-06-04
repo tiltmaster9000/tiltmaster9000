@@ -1,11 +1,22 @@
 package xyz.tiltmaster.output.typer;
 
+import xyz.tiltmaster.output.ActivityNotifier;
+
 import java.awt.event.KeyEvent;
 
 /**
  * A {@link Typer} for a German keyboard.
  */
 public class DETyper extends Typer {
+
+    /**
+     * Creates a new typer.
+     *
+     * @param activityNotifier
+     */
+    public DETyper(ActivityNotifier activityNotifier) {
+        super(activityNotifier);
+    }
 
     @Override
     protected void pressForwardSlash() {

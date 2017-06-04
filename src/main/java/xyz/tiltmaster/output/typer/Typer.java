@@ -1,5 +1,7 @@
 package xyz.tiltmaster.output.typer;
 
+import xyz.tiltmaster.output.ActivityNotifier;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
@@ -8,11 +10,14 @@ import java.awt.event.KeyEvent;
  */
 public abstract class Typer {
     Robot robot;
+    private final ActivityNotifier activityNotifier;
 
     /**
      * Creates a new typer.
      */
-    Typer() {
+    Typer(ActivityNotifier activityNotifier) {
+        this.activityNotifier = activityNotifier;
+
         try {
             this.robot = new Robot();
         } catch (AWTException e) {
@@ -26,6 +31,7 @@ public abstract class Typer {
      * @param string The string to type.
      */
     public void type(final String string) {
+        activityNotifier.fire(true);
         this.pressEnter();
 
         for (char c : string.toCharArray()) {
@@ -46,8 +52,8 @@ public abstract class Typer {
             }
         }
 
-
         this.pressEnter();
+        activityNotifier.fire(false);
     }
 
     /**
@@ -100,6 +106,6 @@ public abstract class Typer {
      * @return A random key press time that should be about realistic to a real typing speed.
      */
     int generateRandomPressTime() {
-        return (int) (Math.random() * 50) + 10;
+        return (int) (Math.random() * 30) + 5;
     }
 }

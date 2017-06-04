@@ -1,6 +1,7 @@
 package xyz.tiltmaster;
 
 import xyz.tiltmaster.listener.KeyboardListener;
+import xyz.tiltmaster.output.ActivityNotifier;
 import xyz.tiltmaster.output.OutputListener;
 
 import java.util.concurrent.ExecutorService;
@@ -13,6 +14,7 @@ public final class Main {
     private final ExecutorService threadPool;
     private final OutputListener outputListener;
     private final KeyboardListener keyboardListener;
+    private final ActivityNotifier activityNotifier;
 
 
     /**
@@ -20,9 +22,11 @@ public final class Main {
      */
     private Main() {
         this.threadPool = Executors.newCachedThreadPool();
-        this.outputListener = new OutputListener();
+        this.activityNotifier = new ActivityNotifier();
+        this.outputListener = new OutputListener(activityNotifier);
         this.keyboardListener = new KeyboardListener();
 
+        activityNotifier.subscribe(keyboardListener.getActivityListener());
         keyboardListener.subscribe(this.outputListener);
 
         threadPool.submit(outputListener::run);

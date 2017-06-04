@@ -20,10 +20,13 @@ import java.util.logging.Logger;
 public class KeyboardListener extends Notifier<String> implements NativeKeyListener {
     private final Properties properties;
 
+    private final ActivityListener activityListener;
+
     public KeyboardListener() {
         super();
 
         properties = new Properties();
+        this.activityListener = new ActivityListener();
 
         BufferedInputStream stream;
         try {
@@ -44,11 +47,15 @@ public class KeyboardListener extends Notifier<String> implements NativeKeyListe
         logger.setLevel(Level.WARNING);
     }
 
+    public ActivityListener getActivityListener() {
+        return activityListener;
+    }
+
     @Override
     public void nativeKeyReleased(NativeKeyEvent e) {
         System.out.println("Key Released: " + /*NativeKeyEvent.getKeyText*/(e.getKeyCode()));
         String message = properties.getProperty(NativeKeyEvent.getKeyText(e.getKeyCode()));
-        if (message != null) {
+        if (message != null && !activityListener.isActive()) {
             this.fire(message);
         }
         System.out.println(message);
