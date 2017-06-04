@@ -17,9 +17,9 @@ public class DETyper extends Typer {
     @Override
     protected void pressQuestionMark() {
         robot.keyPress(KeyEvent.VK_SHIFT);
-        //robot.keyPress(KeyEvent.);
+        robot.keyPress(KeyEvent.VK_MINUS);
         robot.delay(this.generateRandomPressTime());
         robot.keyRelease(KeyEvent.VK_SHIFT);
-        // robot.keyRelease(KeyEvent.VK_EXCLAMATION_MARK);
+        robot.keyRelease(KeyEvent.VK_MINUS);
     }
 }
