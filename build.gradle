@@ -1,9 +1,6 @@
 group 'xyz.tiltmaster'
 version '0.1'
 
-mainClassName = 'xyz.tiltmaster.Main'
-sourceCompatibility = 1.8
-
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'application'
@@ -25,10 +22,11 @@ buildscript {
 }
 
 dependencies {
-
     compile group: 'com.1stleg', name: 'jnativehook', version: '2.1.0'
-
 }
+
+mainClassName = 'xyz.tiltmaster.Main'
+sourceCompatibility = 1.8
 
 test.dependsOn processTestResources
 
