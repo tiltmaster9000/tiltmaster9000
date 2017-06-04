@@ -1,8 +1,5 @@
 package xyz.tiltmaster.output.typer;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import xyz.tiltmaster.listener.KeyboardListener;
 import xyz.tiltmaster.output.ActivityNotifier;
 
 import java.awt.*;
@@ -12,7 +9,6 @@ import java.awt.event.KeyEvent;
  * The Typer types a message into the system.
  */
 public abstract class Typer {
-    private static final Logger logger = LogManager.getLogger(KeyboardListener.class);
 
     Robot robot;
     private final ActivityNotifier activityNotifier;
@@ -38,7 +34,6 @@ public abstract class Typer {
      * @param string The string to type.
      */
     public void type(final String string) {
-        logger.info("Setting typing status to TRUE.");
         activityNotifier.fire(true);
         this.pressEnter();
 
@@ -63,7 +58,6 @@ public abstract class Typer {
             }
         }
 
-        logger.info("Setting typing status to FALSE.");
         this.pressEnter();
         activityNotifier.fire(false);
     }

@@ -8,6 +8,7 @@ public class ActivityListener implements IListener<Boolean> {
     @Override
     public void activate(Boolean isActive) {
         this.isActive = isActive;
+        System.out.println("Setting typing status to: " + !isActive);
     }
 
     public boolean isActive() {
@@ -16,5 +17,6 @@ public class ActivityListener implements IListener<Boolean> {
 
     public void setActive(boolean isActive) {
         this.isActive = isActive;
+        System.out.println("USER ACTION: Setting typing status to: " + !isActive);
     }
 }
