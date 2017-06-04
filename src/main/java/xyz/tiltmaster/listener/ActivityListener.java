@@ -1,5 +1,4 @@
 package xyz.tiltmaster.listener;
-
 import xyz.tiltmaster.util.IListener;
 
 
@@ -13,5 +12,9 @@ public class ActivityListener implements IListener<Boolean> {
 
     public boolean isActive() {
         return isActive;
+    }
+
+    public void setActive(boolean isActive) {
+        this.isActive = isActive;
     }
 }

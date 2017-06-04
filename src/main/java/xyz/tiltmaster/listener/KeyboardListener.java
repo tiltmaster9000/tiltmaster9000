@@ -1,5 +1,7 @@
 package xyz.tiltmaster.listener;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyEvent;
@@ -8,16 +10,18 @@ import xyz.tiltmaster.util.Notifier;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 public class KeyboardListener extends Notifier<String> implements NativeKeyListener {
-    private final Properties properties;
+    private static final Logger logger = LogManager.getLogger(KeyboardListener.class);
 
+    private final String TILTMASTER_ON = "on";
+    private final String TILTMASTER_OFF = "off";
+
+    private final Properties properties;
     private final ActivityListener activityListener;
 
     public KeyboardListener() {
@@ -32,7 +36,7 @@ public class KeyboardListener extends Notifier<String> implements NativeKeyListe
             properties.load(stream);
             stream.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Error loading properties file.", e);
         }
         try {
             GlobalScreen.registerNativeHook();
@@ -40,8 +44,8 @@ public class KeyboardListener extends Notifier<String> implements NativeKeyListe
             e.printStackTrace();
         }
 
-        // Set logger level to warning
-        Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
+        // Set logger level to warning for jnativehook
+        java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GlobalScreen.class.getPackage().getName());
         logger.setLevel(Level.WARNING);
     }
 
@@ -51,12 +55,15 @@ public class KeyboardListener extends Notifier<String> implements NativeKeyListe
 
     @Override
     public void nativeKeyReleased(NativeKeyEvent e) {
-        System.out.println("Key Released: " + /*NativeKeyEvent.getKeyText*/(e.getKeyCode()));
         String message = properties.getProperty(NativeKeyEvent.getKeyText(e.getKeyCode()));
-        if (message != null && !activityListener.isActive()) {
+        if (message != null && message.equals(TILTMASTER_ON)) {
+            activityListener.setActive(true);
+        } else if (message != null && message.equals(TILTMASTER_OFF)) {
+            activityListener.setActive(true);
+        } else if (message != null && !activityListener.isActive()) {
+            logger.info("Firing Message: " + message);
             this.fire(message);
         }
-        System.out.println(message);
     }
 
     @Override
@@ -65,7 +72,6 @@ public class KeyboardListener extends Notifier<String> implements NativeKeyListe
 
     @Override
     public void nativeKeyPressed(NativeKeyEvent e) {
-        System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
     }
 
     public void listen() {
