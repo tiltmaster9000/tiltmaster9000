@@ -21,9 +21,11 @@ public class KeyboardListener extends Notifier<String> implements NativeKeyListe
     private final Properties properties;
 
     public KeyboardListener() {
+        super();
+
         properties = new Properties();
 
-        BufferedInputStream stream = null;
+        BufferedInputStream stream;
         try {
             stream = new BufferedInputStream(new FileInputStream("../keymap.properties"));
             properties.load(stream);
@@ -62,6 +64,6 @@ public class KeyboardListener extends Notifier<String> implements NativeKeyListe
     }
 
     public void listen() {
-        GlobalScreen.addNativeKeyListener(new KeyboardListener());
+        GlobalScreen.addNativeKeyListener(this);
     }
 }

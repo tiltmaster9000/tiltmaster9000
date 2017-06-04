@@ -23,7 +23,7 @@ public final class Main {
         this.outputListener = new OutputListener();
         this.keyboardListener = new KeyboardListener();
 
-        this.keyboardListener.subscribe(this.outputListener);
+        keyboardListener.subscribe(this.outputListener);
 
         threadPool.submit(outputListener::run);
         threadPool.submit(keyboardListener::listen);
