@@ -1,7 +1,5 @@
 package xyz.tiltmaster.output.typer;
 
-import xyz.tiltmaster.output.typer.Typer;
-
 import java.awt.event.KeyEvent;
 
 public class DETyper extends Typer {

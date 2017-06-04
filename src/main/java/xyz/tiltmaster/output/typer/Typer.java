@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
 public abstract class Typer {
     protected Robot robot;
 
-    Typer() {
+    public Typer() {
         try {
             this.robot = new Robot();
         } catch (AWTException e) {
