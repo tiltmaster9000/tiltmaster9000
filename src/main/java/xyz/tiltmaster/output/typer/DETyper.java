@@ -2,7 +2,19 @@ package xyz.tiltmaster.output.typer;
 
 import java.awt.event.KeyEvent;
 
+/**
+ * A {@link Typer} for a German keyboard.
+ */
 public class DETyper extends Typer {
+
+    @Override
+    protected void pressForwardSlash() {
+        robot.keyPress(KeyEvent.VK_SHIFT);
+        robot.keyPress(KeyEvent.VK_7);
+        robot.delay(this.generateRandomPressTime());
+        robot.keyRelease(KeyEvent.VK_SHIFT);
+        robot.keyRelease(KeyEvent.VK_7);
+    }
 
     @SuppressWarnings("Duplicates")
     @Override

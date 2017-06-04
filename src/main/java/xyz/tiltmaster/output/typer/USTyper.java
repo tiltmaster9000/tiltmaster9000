@@ -2,7 +2,17 @@ package xyz.tiltmaster.output.typer;
 
 import java.awt.event.KeyEvent;
 
+/**
+ * A {@link Typer} for a US keyboard.
+ */
 public class USTyper extends Typer {
+
+    @Override
+    protected void pressForwardSlash() {
+        robot.keyPress(KeyEvent.VK_SLASH);
+        robot.delay(this.generateRandomPressTime());
+        robot.keyRelease(KeyEvent.VK_SLASH);
+    }
 
     @SuppressWarnings("Duplicates")
     @Override

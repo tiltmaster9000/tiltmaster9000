@@ -2,7 +2,6 @@ package xyz.tiltmaster;
 
 import xyz.tiltmaster.output.OutputListener;
 
-import java.awt.im.InputContext;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -18,9 +17,6 @@ public final class Main {
      * Constructor for main class.
      */
     private Main() {
-        InputContext context = InputContext.getInstance();
-        String locale = context.getLocale().toString();
-
         this.threadPool = Executors.newCachedThreadPool();
         this.outputListener = new OutputListener();
 

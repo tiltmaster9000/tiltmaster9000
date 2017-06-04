@@ -35,8 +35,8 @@ public class OutputListener implements IListener<String> {
     }
 
     @Override
-    public void activate(final String string) {
-        blockingQueue.add(string);
+    public void activate(String event) {
+        blockingQueue.add(event);
     }
 
     public void run() {

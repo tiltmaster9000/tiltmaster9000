@@ -3,11 +3,16 @@ package xyz.tiltmaster.output.typer;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
+/**
+ * The Typer types a message into the system.
+ */
+abstract class Typer {
+    Robot robot;
 
-public abstract class Typer {
-    protected Robot robot;
-
-    public Typer() {
+    /**
+     * Creates a new typer.
+     */
+    Typer() {
         try {
             this.robot = new Robot();
         } catch (AWTException e) {
@@ -15,7 +20,12 @@ public abstract class Typer {
         }
     }
 
-    public void type(final String string) {
+    /**
+     * Type the given string.
+     *
+     * @param string The string to type
+     */
+    void type(final String string) {
         this.pressEnter();
 
         for (char c : string.toCharArray()) {
@@ -25,6 +35,8 @@ public abstract class Typer {
             }
 
             switch (c) {
+                case '/':
+                    this.pressForwardSlash();
                 case '?':
                     this.pressQuestionMark();
                 case '!':
@@ -38,12 +50,20 @@ public abstract class Typer {
         this.pressEnter();
     }
 
+    /**
+     * Implement a virtual enter key press.
+     */
     private void pressEnter() {
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.delay(this.generateRandomPressTime());
         robot.keyRelease(KeyEvent.VK_ENTER);
     }
 
+    /**
+     *
+     * @param c
+     * @param keyCode
+     */
     private void pressNormalKey(final char c, final int keyCode) {
         if (Character.isUpperCase(c)) {
             robot.keyPress(KeyEvent.VK_SHIFT);
@@ -58,11 +78,26 @@ public abstract class Typer {
         robot.delay(this.generateRandomPressTime());
     }
 
-    protected abstract void pressExlamationMark();
+    /**
+     * Implement a virtual forward slash key press.
+     */
+    abstract void pressForwardSlash();
 
-    protected abstract void pressQuestionMark();
+    /**
+     * Implement a virtual exclamation key press.
+     */
+    abstract void pressExlamationMark();
 
-    protected int generateRandomPressTime() {
+    /**
+     * Implement a virtual question mark key press.
+     */
+    abstract void pressQuestionMark();
+
+    /**
+     *
+     * @return
+     */
+    int generateRandomPressTime() {
         return 50;
     }
 }
