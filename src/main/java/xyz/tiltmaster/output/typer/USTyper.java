@@ -12,7 +12,7 @@ public class USTyper extends Typer {
     /**
      * Creates a new typer.
      *
-     * @param activityNotifier
+     * @param activityNotifier The activity notifier that back propagates the typer activity status through the program.
      */
     public USTyper(ActivityNotifier activityNotifier) {
         super(activityNotifier);

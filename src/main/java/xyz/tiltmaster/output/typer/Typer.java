@@ -14,6 +14,8 @@ public abstract class Typer {
 
     /**
      * Creates a new typer.
+     *
+     * @param activityNotifier The activity notifier that back propagates the typer activity status through the program.
      */
     Typer(ActivityNotifier activityNotifier) {
         this.activityNotifier = activityNotifier;
@@ -43,10 +45,13 @@ public abstract class Typer {
             switch (c) {
                 case '/':
                     this.pressForwardSlash();
+                    break;
                 case '?':
                     this.pressQuestionMark();
+                    break;
                 case '!':
                     this.pressExlamationMark();
+                    break;
                 default:
                     this.pressNormalKey(c, keyCode);
             }

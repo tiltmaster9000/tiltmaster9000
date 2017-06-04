@@ -14,9 +14,7 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * Created by David on 04.06.2017.
- */
+
 public class KeyboardListener extends Notifier<String> implements NativeKeyListener {
     private final Properties properties;
 
