@@ -1,15 +1,11 @@
 package xyz.tiltmaster.listener;
 
-import com.tulskiy.keymaster.common.HotKey;
-import com.tulskiy.keymaster.common.HotKeyListener;
-import com.tulskiy.keymaster.common.Provider;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
 import xyz.tiltmaster.util.Observer;
 
-import javax.swing.*;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -45,7 +41,7 @@ public class KeyboardListener extends Observer implements NativeKeyListener {
 
         BufferedInputStream stream = null;
         try {
-            stream = new BufferedInputStream(new FileInputStream("../../keymap.properties"));
+            stream = new BufferedInputStream(new FileInputStream("../keymap.properties"));
             properties.load(stream);
             stream.close();
         } catch (IOException e) {
