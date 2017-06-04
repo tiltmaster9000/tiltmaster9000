@@ -11,6 +11,6 @@ public class Main {
 
         final OutputListener outputListener = new OutputListener();
 
-        threadPool.submit(outputListener::start);
+        threadPool.submit(outputListener::run);
     }
 }

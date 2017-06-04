@@ -41,11 +41,7 @@ public class Typer {
 
     private void pressEnter() {
         robot.keyPress(KeyEvent.VK_ENTER);
-        try {
-            Thread.sleep(this.generateRandomPressTime());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        robot.delay(this.generateRandomPressTime());
         robot.keyRelease(KeyEvent.VK_ENTER);
     }
 
@@ -66,11 +62,7 @@ public class Typer {
     private void pressExlamationMark() {
         robot.keyPress(KeyEvent.VK_SHIFT);
         robot.keyPress(KeyEvent.VK_1);
-        try {
-            Thread.sleep(this.generateRandomPressTime());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        robot.delay(this.generateRandomPressTime());
         robot.keyRelease(KeyEvent.VK_SHIFT);
         robot.keyRelease(KeyEvent.VK_1);
     }
@@ -78,13 +70,8 @@ public class Typer {
     private void pressQuestionMark() {
         robot.keyPress(KeyEvent.VK_SHIFT);
         //robot.keyPress(KeyEvent.);
-        try {
-            Thread.sleep(this.generateRandomPressTime());
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        robot.delay(this.generateRandomPressTime());
         robot.keyRelease(KeyEvent.VK_SHIFT);
-        //
         // robot.keyRelease(KeyEvent.VK_EXCLAMATION_MARK);
     }
 
