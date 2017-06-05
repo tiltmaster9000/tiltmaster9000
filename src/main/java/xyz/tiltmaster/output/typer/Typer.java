@@ -9,7 +9,6 @@ import java.awt.event.KeyEvent;
  * The Typer types a message into the system.
  */
 public abstract class Typer {
-
     Robot robot;
     private final ActivityNotifier activityNotifier;
 

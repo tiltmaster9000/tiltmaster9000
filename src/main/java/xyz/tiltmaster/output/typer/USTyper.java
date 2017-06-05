@@ -40,7 +40,7 @@ public class USTyper extends Typer {
         robot.keyPress(KeyEvent.VK_SHIFT);
         robot.keyPress(KeyEvent.VK_SLASH);
         robot.delay(this.generateRandomPressTime());
+        robot.keyRelease(KeyEvent.VK_SHIFT);
         robot.keyRelease(KeyEvent.VK_SLASH);
-        robot.keyRelease(KeyEvent.VK_EXCLAMATION_MARK);
     }
 }
