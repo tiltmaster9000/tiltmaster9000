@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/tiltmaster9000/tiltmaster9000.svg?branch=master)](https://travis-ci.org/tiltmaster9000/tiltmaster9000)
 
-Tilt your enemies to death with TiltMaster9000 and win your games. Works better when intoxicated.
+Tilt your enemies to death with TiltMaster9000 and win your League of Legends games. Works better when intoxicated.
 
 ### Usage
 
