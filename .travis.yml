@@ -1,0 +1,13 @@
+language: java
+
+jdk:
+  - oraclejdk8
+
+sudo: required
+addons:
+  apt:
+    packages:
+      - oracle-java8-installer
+
+notifications:
+  email: false
