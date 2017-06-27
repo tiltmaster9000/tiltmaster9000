@@ -5,12 +5,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 
 public class ActivityListener implements IListener<Boolean> {
-    private AtomicBoolean isActive = new AtomicBoolean(false);
+    private AtomicBoolean isActive = new AtomicBoolean(true);
 
     @Override
     public void activate(Boolean isActive) {
         this.isActive.set(isActive);
-        System.out.println("Setting typing status to: " + !isActive);
+        System.out.println("INTERNAL: Setting typing status to: " + !isActive);
     }
 
     public boolean isActive() {

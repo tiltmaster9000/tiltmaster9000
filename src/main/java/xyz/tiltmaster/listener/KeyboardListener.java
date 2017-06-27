@@ -27,6 +27,8 @@ public class KeyboardListener extends Notifier<String> implements NativeKeyListe
     private final JSONObject jsonObject;
     private final ActivityListener activityListener;
 
+    private boolean toggledUser = false;
+
     public KeyboardListener() {
         super();
         JSONObject jsonObjectTemp;
@@ -68,10 +70,13 @@ public class KeyboardListener extends Notifier<String> implements NativeKeyListe
             message = null;
         }
         if (message != null && message.equals(TILTMASTER_ON)) {
+            toggledUser = false;
             activityListener.setActive(false);
         } else if (message != null && message.equals(TILTMASTER_OFF)) {
+            toggledUser = false;
             activityListener.setActive(true);
-        } else if (message != null && message.equals(TILTMASTER_TOGGLE)) {
+        } else if (message != null && message.equals(TILTMASTER_TOGGLE) && (!activityListener.isActive() || toggledUser)) {
+            toggledUser = !toggledUser;
             activityListener.setActive(!activityListener.isActive());
         } else if (message != null && !activityListener.isActive()) {
             System.out.println("Firing Message: " + message);

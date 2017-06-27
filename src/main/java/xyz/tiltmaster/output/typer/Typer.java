@@ -57,7 +57,16 @@ public abstract class Typer {
             }
         }
 
+
         this.pressEnter();
+
+        // Dirty fix for threading
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         activityNotifier.fire(false);
     }
 
