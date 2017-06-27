@@ -34,7 +34,7 @@ public class KeyboardListener extends Notifier<String> implements NativeKeyListe
         BufferedInputStream stream;
         JSONParser parser = new JSONParser();
         try {
-            jsonObjectTemp = (JSONObject) parser.parse(new FileReader("../tiltfile_en.json"));
+            jsonObjectTemp = (JSONObject) parser.parse(new FileReader("../tiltfile.json"));
 
         } catch (IOException | ParseException e) {
             jsonObjectTemp = null;
