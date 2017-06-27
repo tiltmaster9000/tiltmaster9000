@@ -1,5 +1,5 @@
 group 'xyz.tiltmaster'
-version '0.1'
+version '0.9'
 
 apply plugin: 'java'
 apply plugin: 'idea'
@@ -39,4 +39,14 @@ jar {
     from {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
+}
+
+// Create a single Jar with all dependencies
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': "$mainClassName"
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
 }
