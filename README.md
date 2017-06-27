@@ -1,5 +1,7 @@
 # TiltMaster9000
 
+[![Build Status](https://travis-ci.org/tiltmaster9000/tiltmaster9000.svg?branch=master)](https://travis-ci.org/tiltmaster9000/tiltmaster9000)
+
 Tilt your enemies to death with TiltMaster9000 to win your games. Works better when intoxicated.
 
 ### Usage
