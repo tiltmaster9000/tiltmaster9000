@@ -11,7 +11,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 
 /**
- * Manages the oup
+ * Manages
  */
 public class OutputListener implements IListener<String> {
     private final BlockingQueue<String> blockingQueue;
