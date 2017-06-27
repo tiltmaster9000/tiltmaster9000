@@ -13,6 +13,7 @@ import xyz.tiltmaster.util.Notifier;
 import java.io.BufferedInputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.logging.Level;
@@ -21,6 +22,7 @@ import java.util.logging.Level;
 public class KeyboardListener extends Notifier<String> implements NativeKeyListener {
     private final String TILTMASTER_ON = "on";
     private final String TILTMASTER_OFF = "off";
+    private final String TILTMASTER_TOGGLE = "toggle";
 
     private final JSONObject jsonObject;
     private final ActivityListener activityListener;
@@ -69,6 +71,8 @@ public class KeyboardListener extends Notifier<String> implements NativeKeyListe
             activityListener.setActive(false);
         } else if (message != null && message.equals(TILTMASTER_OFF)) {
             activityListener.setActive(true);
+        } else if (message != null && message.equals(TILTMASTER_TOGGLE)) {
+            activityListener.setActive(!activityListener.isActive());
         } else if (message != null && !activityListener.isActive()) {
             System.out.println("Firing Message: " + message);
             this.fire(message);
