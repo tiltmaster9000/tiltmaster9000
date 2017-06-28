@@ -59,23 +59,32 @@ public class USTyper extends Typer {
     }
 
     @Override
-    void pressSemiColon() {
-        robot.keyPress(KeyEvent.VK_SEMICOLON);
-        robot.delay(this.generateRandomPressTime());
-        robot.keyRelease(KeyEvent.VK_SEMICOLON);
+    void pressParenOpen() {
+
     }
 
     @Override
-    void pressSemiColon() {
-        robot.keyPress(KeyEvent.VK_SEMICOLON);
-        robot.delay(this.generateRandomPressTime());
-        robot.keyRelease(KeyEvent.VK_SEMICOLON);
+    void pressParenClose() {
+
     }
 
     @Override
-    void pressSemiColon() {
-        robot.keyPress(KeyEvent.VK_SEMICOLON);
-        robot.delay(this.generateRandomPressTime());
-        robot.keyRelease(KeyEvent.VK_SEMICOLON);
+    void pressGreaterThan() {
+
+    }
+
+    @Override
+    void pressLessThan() {
+
+    }
+
+    @Override
+    void pressStar() {
+
+    }
+
+    @Override
+    void pressApostrophe() {
+
     }
 }

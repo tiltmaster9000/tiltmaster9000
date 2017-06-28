@@ -66,4 +66,34 @@ public class DETyper extends Typer {
         robot.keyRelease(KeyEvent.VK_SHIFT);
         robot.keyRelease(KeyEvent.VK_COMMA);
     }
+
+    @Override
+    void pressParenOpen() {
+
+    }
+
+    @Override
+    void pressParenClose() {
+
+    }
+
+    @Override
+    void pressGreaterThan() {
+
+    }
+
+    @Override
+    void pressLessThan() {
+
+    }
+
+    @Override
+    void pressStar() {
+
+    }
+
+    @Override
+    void pressApostrophe() {
+
+    }
 }
