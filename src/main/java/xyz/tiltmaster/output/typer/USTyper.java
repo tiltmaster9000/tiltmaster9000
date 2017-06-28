@@ -57,4 +57,25 @@ public class USTyper extends Typer {
         robot.delay(this.generateRandomPressTime());
         robot.keyRelease(KeyEvent.VK_SEMICOLON);
     }
+
+    @Override
+    void pressSemiColon() {
+        robot.keyPress(KeyEvent.VK_SEMICOLON);
+        robot.delay(this.generateRandomPressTime());
+        robot.keyRelease(KeyEvent.VK_SEMICOLON);
+    }
+
+    @Override
+    void pressSemiColon() {
+        robot.keyPress(KeyEvent.VK_SEMICOLON);
+        robot.delay(this.generateRandomPressTime());
+        robot.keyRelease(KeyEvent.VK_SEMICOLON);
+    }
+
+    @Override
+    void pressSemiColon() {
+        robot.keyPress(KeyEvent.VK_SEMICOLON);
+        robot.delay(this.generateRandomPressTime());
+        robot.keyRelease(KeyEvent.VK_SEMICOLON);
+    }
 }

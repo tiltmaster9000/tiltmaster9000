@@ -132,6 +132,36 @@ public abstract class Typer {
     abstract void pressSemiColon();
 
     /**
+     * Implement a virtual parentheses open key press.
+     */
+    abstract void pressParenOpen();
+
+    /**
+     * Implement a virtual parentheses close key press.
+     */
+    abstract void pressParenClose();
+
+    /**
+     * Implement a virtual greater than key press.
+     */
+    abstract void pressGreaterThan();
+
+    /**
+     * Implement a virtual less than key press.
+     */
+    abstract void pressLessThan();
+
+    /**
+     * Implement a virtual star key press.
+     */
+    abstract void pressStar();
+
+    /**
+     * Implement a virtual apostrophe key press.
+     */
+    abstract void pressApostrophe();
+
+    /**
      * Generate a random key press time that should be about realistic to a real typing speed.
      *
      * @return A random key press time that should be about realistic to a real typing speed.
