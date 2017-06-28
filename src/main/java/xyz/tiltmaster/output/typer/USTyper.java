@@ -43,4 +43,18 @@ public class USTyper extends Typer {
         robot.keyRelease(KeyEvent.VK_SHIFT);
         robot.keyRelease(KeyEvent.VK_SLASH);
     }
+
+    @Override
+    void pressColon() {
+        robot.keyPress(KeyEvent.VK_SHIFT);
+        pressSemiColon();
+        robot.keyRelease(KeyEvent.VK_SHIFT);
+    }
+
+    @Override
+    void pressSemiColon() {
+        robot.keyPress(KeyEvent.VK_SEMICOLON);
+        robot.delay(this.generateRandomPressTime());
+        robot.keyRelease(KeyEvent.VK_SEMICOLON);
+    }
 }

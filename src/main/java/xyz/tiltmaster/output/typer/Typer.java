@@ -52,6 +52,12 @@ public abstract class Typer {
                 case '!':
                     this.pressExlamationMark();
                     break;
+                case ':':
+                    this.pressColon();
+                    break;
+                case ';':
+                    this.pressSemiColon();
+                    break;
                 default:
                     this.pressNormalKey(c, keyCode);
             }
@@ -82,7 +88,7 @@ public abstract class Typer {
     /**
      * Implement a virtual forward slash key press.
      *
-     * @param c The character that should be pressed.
+     * @param c       The character that should be pressed.
      * @param keyCode The keyCode of that key that should pressed.
      */
     private void pressNormalKey(final char c, final int keyCode) {
@@ -113,6 +119,17 @@ public abstract class Typer {
      * Implement a virtual question mark key press.
      */
     abstract void pressQuestionMark();
+
+
+    /**
+     * Implement a virtual colon key press.
+     */
+    abstract void pressColon();
+
+    /**
+     * Implement a virtual semicolon key press.
+     */
+    abstract void pressSemiColon();
 
     /**
      * Generate a random key press time that should be about realistic to a real typing speed.

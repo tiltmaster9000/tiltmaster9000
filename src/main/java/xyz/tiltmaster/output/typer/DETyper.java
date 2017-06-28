@@ -39,10 +39,31 @@ public class DETyper extends Typer {
 
     @Override
     protected void pressQuestionMark() {
+        //TODO NOT WORKING
+        /*
         robot.keyPress(KeyEvent.VK_SHIFT);
-        robot.keyPress(KeyEvent.VK_MINUS);
+        robot.keyPress(KeyEvent.getExtendedKeyCodeForChar('ß'));
         robot.delay(this.generateRandomPressTime());
         robot.keyRelease(KeyEvent.VK_SHIFT);
-        robot.keyRelease(KeyEvent.VK_MINUS);
+        robot.keyPress(KeyEvent.getExtendedKeyCodeForChar('ß'));
+        */
+    }
+
+    @Override
+    void pressColon() {
+        robot.keyPress(KeyEvent.VK_SHIFT);
+        robot.keyPress(KeyEvent.VK_PERIOD);
+        robot.delay(this.generateRandomPressTime());
+        robot.keyRelease(KeyEvent.VK_SHIFT);
+        robot.keyRelease(KeyEvent.VK_PERIOD);
+    }
+
+    @Override
+    void pressSemiColon() {
+        robot.keyPress(KeyEvent.VK_SHIFT);
+        robot.keyPress(KeyEvent.VK_COMMA);
+        robot.delay(this.generateRandomPressTime());
+        robot.keyRelease(KeyEvent.VK_SHIFT);
+        robot.keyRelease(KeyEvent.VK_COMMA);
     }
 }
