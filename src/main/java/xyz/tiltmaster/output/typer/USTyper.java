@@ -87,4 +87,9 @@ public class USTyper extends Typer {
     void pressApostrophe() {
 
     }
+
+    @Override
+    void pressEquals() {
+
+    }
 }

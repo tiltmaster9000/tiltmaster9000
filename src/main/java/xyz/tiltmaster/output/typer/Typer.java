@@ -58,6 +58,27 @@ public abstract class Typer {
                 case ';':
                     this.pressSemiColon();
                     break;
+                case '(':
+                    this.pressParenOpen();
+                    break;
+                case ')':
+                    this.pressParenClose();
+                    break;
+                case '\'':
+                    this.pressApostrophe();
+                    break;
+                case '<':
+                    this.pressLessThan();
+                    break;
+                case '>':
+                    this.pressGreaterThan();
+                    break;
+                case '*':
+                    this.pressStar();
+                    break;
+                case '=':
+                    this.pressEquals();
+                    break;
                 default:
                     this.pressNormalKey(c, keyCode);
             }
@@ -160,6 +181,11 @@ public abstract class Typer {
      * Implement a virtual apostrophe key press.
      */
     abstract void pressApostrophe();
+
+    /**
+     * Implement a virtual equals key press
+     */
+    abstract void pressEquals();
 
     /**
      * Generate a random key press time that should be about realistic to a real typing speed.
