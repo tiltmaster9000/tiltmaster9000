@@ -61,24 +61,25 @@ public class KeyboardListener extends Notifier<String> implements NativeKeyListe
 
     @Override
     public void nativeKeyReleased(NativeKeyEvent e) {
-        JSONArray msg = (JSONArray) jsonObject.get(NativeKeyEvent.getKeyText(e.getKeyCode()));
-        String[] messageArray = jsonArrayToStringArray(msg);
-        String message;
-        if  (messageArray != null) {
-            message = messageArray[new Random().nextInt(messageArray.length)];
-        } else {
-            message = null;
+        JSONObject obj = (JSONObject) (jsonObject.get(NativeKeyEvent.getKeyText(e.getKeyCode())));
+        if  (obj == null) {
+            return;
         }
-        if (message != null && message.equals(TILTMASTER_ON)) {
+
+        JSONArray msg = (JSONArray) obj.get("tilts");
+        String[] messageArray = jsonArrayToStringArray(msg);
+        String message = messageArray[new Random().nextInt(messageArray.length)];
+
+        if (message.equals(TILTMASTER_ON)) {
             toggledUser = false;
             activityListener.setActive(false);
-        } else if (message != null && message.equals(TILTMASTER_OFF)) {
+        } else if (message.equals(TILTMASTER_OFF)) {
             toggledUser = false;
             activityListener.setActive(true);
-        } else if (message != null && message.equals(TILTMASTER_TOGGLE) && (!activityListener.isActive() || toggledUser)) {
+        } else if (message.equals(TILTMASTER_TOGGLE) && (!activityListener.isActive() || toggledUser)) {
             toggledUser = !toggledUser;
             activityListener.setActive(!activityListener.isActive());
-        } else if (message != null && !activityListener.isActive()) {
+        } else if (!activityListener.isActive()) {
             System.out.println("Firing Message: " + message);
             this.fire(message);
         }
