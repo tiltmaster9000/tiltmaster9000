@@ -39,10 +39,92 @@ public class DETyper extends Typer {
 
     @Override
     protected void pressQuestionMark() {
+        //TODO NOT WORKING
+        /*
         robot.keyPress(KeyEvent.VK_SHIFT);
-        robot.keyPress(KeyEvent.VK_MINUS);
+        robot.keyPress(KeyEvent.getExtendedKeyCodeForChar('ß'));
         robot.delay(this.generateRandomPressTime());
         robot.keyRelease(KeyEvent.VK_SHIFT);
-        robot.keyRelease(KeyEvent.VK_MINUS);
+        robot.keyPress(KeyEvent.getExtendedKeyCodeForChar('ß'));
+        */
+    }
+
+    @Override
+    void pressColon() {
+        robot.keyPress(KeyEvent.VK_SHIFT);
+        robot.keyPress(KeyEvent.VK_PERIOD);
+        robot.delay(this.generateRandomPressTime());
+        robot.keyRelease(KeyEvent.VK_SHIFT);
+        robot.keyRelease(KeyEvent.VK_PERIOD);
+    }
+
+    @Override
+    void pressSemiColon() {
+        robot.keyPress(KeyEvent.VK_SHIFT);
+        robot.keyPress(KeyEvent.VK_COMMA);
+        robot.delay(this.generateRandomPressTime());
+        robot.keyRelease(KeyEvent.VK_SHIFT);
+        robot.keyRelease(KeyEvent.VK_COMMA);
+    }
+
+    @Override
+    void pressParenOpen() {
+        robot.keyPress(KeyEvent.VK_SHIFT);
+        robot.keyPress(KeyEvent.VK_8);
+        robot.delay(this.generateRandomPressTime());
+        robot.keyRelease(KeyEvent.VK_SHIFT);
+        robot.keyRelease(KeyEvent.VK_8);
+    }
+
+    @Override
+    void pressParenClose() {
+        robot.keyPress(KeyEvent.VK_SHIFT);
+        robot.keyPress(KeyEvent.VK_9);
+        robot.delay(this.generateRandomPressTime());
+        robot.keyRelease(KeyEvent.VK_SHIFT);
+        robot.keyRelease(KeyEvent.VK_9);
+    }
+
+    @Override
+    void pressGreaterThan() {
+        robot.keyPress(KeyEvent.VK_SHIFT);
+        robot.keyPress(KeyEvent.VK_LESS);
+        robot.delay(this.generateRandomPressTime());
+        robot.keyRelease(KeyEvent.VK_LESS);
+        robot.keyRelease(KeyEvent.VK_SHIFT);
+    }
+
+    @Override
+    void pressLessThan() {
+        robot.keyPress(KeyEvent.VK_LESS);
+        robot.delay(this.generateRandomPressTime());
+        robot.keyRelease(KeyEvent.VK_LESS);
+    }
+
+    @Override
+    void pressStar() {
+        robot.keyPress(KeyEvent.VK_SHIFT);
+        robot.keyPress(KeyEvent.VK_PLUS);
+        robot.delay(this.generateRandomPressTime());
+        robot.keyRelease(KeyEvent.VK_SHIFT);
+        robot.keyRelease(KeyEvent.VK_PLUS);
+    }
+
+    @Override
+    void pressApostrophe() {
+        robot.keyPress(KeyEvent.VK_SHIFT);
+        robot.keyPress(KeyEvent.VK_NUMBER_SIGN);
+        robot.delay(this.generateRandomPressTime());
+        robot.keyRelease(KeyEvent.VK_SHIFT);
+        robot.keyRelease(KeyEvent.VK_NUMBER_SIGN);
+    }
+
+    @Override
+    void pressEquals() {
+        robot.keyPress(KeyEvent.VK_SHIFT);
+        robot.keyPress(KeyEvent.VK_0);
+        robot.delay(this.generateRandomPressTime());
+        robot.keyRelease(KeyEvent.VK_SHIFT);
+        robot.keyRelease(KeyEvent.VK_0);
     }
 }

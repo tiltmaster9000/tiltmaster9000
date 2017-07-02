@@ -2,7 +2,8 @@
   "F7": ["on"],
   "F8": ["off"],
   "⏎": ["toggle"],
-  "S": [
+  "F9": ["()/,.;:<>#'+*="],
+  "F10": [
     "/all too easy <3",
     "/all damn, never seen anyone suck that hard",
     "/all my grandma is better than you",
@@ -11,16 +12,19 @@
     "/all omg you suck",
     "/all get rekt"
   ],
-  "T": [
+  "F11": [
     "/all thanks :)",
     "/all your tears, so delicious :)",
     "/all aww, are you crying?",
     "/all boohoo go cry at your mom"
   ],
-  "A": [
+  "F12": [
     "/all gg, tutorial was harder",
     "/all gg easy",
     "/all gg ez",
     "/all easy game easy life"
+  ],
+  "B": [
+  "/all :*"
   ]
 }

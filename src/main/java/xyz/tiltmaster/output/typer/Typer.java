@@ -52,6 +52,33 @@ public abstract class Typer {
                 case '!':
                     this.pressExlamationMark();
                     break;
+                case ':':
+                    this.pressColon();
+                    break;
+                case ';':
+                    this.pressSemiColon();
+                    break;
+                case '(':
+                    this.pressParenOpen();
+                    break;
+                case ')':
+                    this.pressParenClose();
+                    break;
+                case '\'':
+                    this.pressApostrophe();
+                    break;
+                case '<':
+                    this.pressLessThan();
+                    break;
+                case '>':
+                    this.pressGreaterThan();
+                    break;
+                case '*':
+                    this.pressStar();
+                    break;
+                case '=':
+                    this.pressEquals();
+                    break;
                 default:
                     this.pressNormalKey(c, keyCode);
             }
@@ -82,7 +109,7 @@ public abstract class Typer {
     /**
      * Implement a virtual forward slash key press.
      *
-     * @param c The character that should be pressed.
+     * @param c       The character that should be pressed.
      * @param keyCode The keyCode of that key that should pressed.
      */
     private void pressNormalKey(final char c, final int keyCode) {
@@ -113,6 +140,52 @@ public abstract class Typer {
      * Implement a virtual question mark key press.
      */
     abstract void pressQuestionMark();
+
+
+    /**
+     * Implement a virtual colon key press.
+     */
+    abstract void pressColon();
+
+    /**
+     * Implement a virtual semicolon key press.
+     */
+    abstract void pressSemiColon();
+
+    /**
+     * Implement a virtual parentheses open key press.
+     */
+    abstract void pressParenOpen();
+
+    /**
+     * Implement a virtual parentheses close key press.
+     */
+    abstract void pressParenClose();
+
+    /**
+     * Implement a virtual greater than key press.
+     */
+    abstract void pressGreaterThan();
+
+    /**
+     * Implement a virtual less than key press.
+     */
+    abstract void pressLessThan();
+
+    /**
+     * Implement a virtual star key press.
+     */
+    abstract void pressStar();
+
+    /**
+     * Implement a virtual apostrophe key press.
+     */
+    abstract void pressApostrophe();
+
+    /**
+     * Implement a virtual equals key press
+     */
+    abstract void pressEquals();
 
     /**
      * Generate a random key press time that should be about realistic to a real typing speed.
