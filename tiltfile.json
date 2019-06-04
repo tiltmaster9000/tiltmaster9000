@@ -11,16 +11,10 @@
     "description": "Toggles the bot on and off. When typing, you press enter and that turns the bot off, until you press enter again to send the message, at which point the bot is turned on again.",
     "tilts": ["toggle"]
   },
-  "F10": {
-    "description": "",
+  "F6": {
+    "description": "welcome.",
     "tilts": [
-      "/all too easy <3",
-      "/all damn, never seen anyone suck that hard",
-      "/all my grandma is better than you",
-      "/all I love easy games",
-      "/all outplaayed :*",
-      "/all omg you suck",
-      "/all get rekt"
+      "Tiltmaster9000 activated. Check me out on GitHub."
     ]
   },
   "F11": {

@@ -21,6 +21,7 @@ public final class Main {
      * Constructor for main class.
      */
     private Main() {
+
         this.threadPool = Executors.newCachedThreadPool();
         this.activityNotifier = new ActivityNotifier();
         this.outputListener = new OutputListener(activityNotifier);
