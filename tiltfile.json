@@ -17,22 +17,25 @@
       "Tiltmaster9000 activated. Check me out on GitHub."
     ]
   },
-  "F11": {
-    "description": "",
+  "F10": {
+    "description": "reactions",
     "tilts": [
       "/all thanks :)",
       "/all your tears, so delicious :)",
       "/all aww, are you crying?",
-      "/all boohoo go cry at your mom"
+      "/all boohoo go cry at your mom",
+      "/all :)"
     ]
   },
-  "F12": {
-    "description": "",
+  "F11": {
+    "description": "provocations",
     "tilts": [
       "/all gg, tutorial was harder",
       "/all gg easy",
       "/all gg ez",
-      "/all easy game easy life"
+      "/all easy game easy life",
+      "/all you're trash :)",
+      "/all I bet your wife's son liked that"
     ]
   }
 }
