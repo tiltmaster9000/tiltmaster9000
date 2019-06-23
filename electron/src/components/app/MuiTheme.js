@@ -20,8 +20,7 @@ export default class MuiTheme extends React.Component {
 					main: '#1d1e24'
 				}
 			},
-			overrides: {
-			}
+			overrides: {}
 		})
 
 		return (

@@ -12,7 +12,7 @@ html, body {
 }
 
 .tfc {
-    color: #7589D4;
+    color: #7589D4 !important;
 }
 
 .app {
