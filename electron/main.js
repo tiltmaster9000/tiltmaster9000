@@ -29,10 +29,12 @@ function createWindow() {
     width: 1024,
     height: 768,
     show: false,
+    backgroundColor: '#36393E',
     webPreferences: {
       nodeIntegration: true
     }
   })
+  mainWindow.setResizable(true)
 
   // and load the index.html of the app.
   let indexPath
@@ -90,6 +92,7 @@ app.on('window-all-closed', () => {
 app.on('activate', () => {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
+
   if (mainWindow === null) {
     createWindow()
   }
