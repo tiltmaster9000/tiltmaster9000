@@ -12,17 +12,23 @@ configurations.all {
 allprojects {
     repositories {
         jcenter()
+        maven {
+            url 'https://raw.github.com/repeats/SimpleNativeHooks/maven-export/'
+        }
     }
 }
 
 buildscript {
     repositories {
         jcenter()
+        maven {
+            url 'https://raw.github.com/repeats/SimpleNativeHooks/maven-export/'
+        }
     }
 }
 
 dependencies {
-    compile group: 'com.1stleg', name: 'jnativehook', version: '2.1.0'
+    compile group: 'org.repeats.simplenativehooks', name: 'simplenativehooks', version: '0.0.1'
     compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
 }
 

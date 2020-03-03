@@ -1,31 +1,32 @@
 package xyz.tiltmaster.listener;
 
-import org.jnativehook.GlobalScreen;
-import org.jnativehook.NativeHookException;
-import org.jnativehook.keyboard.NativeKeyEvent;
-import org.jnativehook.keyboard.NativeKeyListener;
+import org.simplenativehooks.NativeHookInitializer;
+import org.simplenativehooks.NativeKeyHook;
+import org.simplenativehooks.events.NativeKeyEvent;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import staticResources.BootStrapResources;
+import utilities.Function;
 import xyz.tiltmaster.util.Notifier;
 
-import java.io.BufferedInputStream;
+import java.awt.event.KeyEvent;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Random;
-import java.util.logging.Level;
 
 
-public class KeyboardListener extends Notifier<String> implements NativeKeyListener {
+public class KeyboardListener extends Notifier<String> {
     private final String TILTMASTER_ON = "on";
     private final String TILTMASTER_OFF = "off";
     private final String TILTMASTER_TOGGLE = "toggle";
 
     private final JSONObject jsonObject;
     private final ActivityListener activityListener;
+    private final NativeKeyHook key = NativeKeyHook.of();
 
     private boolean toggledUser = false;
 
@@ -35,7 +36,6 @@ public class KeyboardListener extends Notifier<String> implements NativeKeyListe
 
         this.activityListener = new ActivityListener();
 
-        BufferedInputStream stream;
         JSONParser parser = new JSONParser();
         try {
             jsonObjectTemp = (JSONObject) parser.parse(new FileReader("tiltfile.json"));
@@ -44,26 +44,36 @@ public class KeyboardListener extends Notifier<String> implements NativeKeyListe
             e.printStackTrace();
         }
         jsonObject = jsonObjectTemp;
-        try {
-            GlobalScreen.registerNativeHook();
-        } catch (NativeHookException e) {
-            e.printStackTrace();
-        }
 
-        // Set logger level to warning for jnativehook
-        java.util.logging.Logger logger = java.util.logging.Logger.getLogger(GlobalScreen.class.getPackage().getName());
-        logger.setLevel(Level.WARNING);
+        try {
+            BootStrapResources.extractResources();
+        } catch (IOException e) {
+            System.out.println("Cannot extract bootstrap resources.");
+            e.printStackTrace();
+            System.exit(2);
+        }
+        NativeHookInitializer.of().start();
+
+        key.setKeyReleased(new Function<NativeKeyEvent, Boolean>() {
+            @Override
+            public Boolean apply(NativeKeyEvent d) {
+                return nativeKeyReleased(d);
+            }
+        });
     }
 
     public ActivityListener getActivityListener() {
         return activityListener;
     }
 
-    @Override
-    public void nativeKeyReleased(NativeKeyEvent e) {
-        JSONObject obj = (JSONObject) (jsonObject.get(NativeKeyEvent.getKeyText(e.getKeyCode())));
-        if  (obj == null) {
-            return;
+    public void listen() {
+        key.startListening();
+    }
+
+    private boolean nativeKeyReleased(NativeKeyEvent e) {
+        JSONObject obj = (JSONObject) (jsonObject.get(KeyEvent.getKeyText(e.getKey())));
+        if (obj == null) {
+            return false;
         }
 
         JSONArray msg = (JSONArray) obj.get("tilts");
@@ -83,6 +93,8 @@ public class KeyboardListener extends Notifier<String> implements NativeKeyListe
             System.out.println("Firing Message: " + message);
             this.fire(message);
         }
+
+        return true;
     }
 
     private String[] jsonArrayToStringArray(JSONArray jsonArray) {
@@ -98,17 +110,5 @@ public class KeyboardListener extends Notifier<String> implements NativeKeyListe
         } else {
             return null;
         }
-    }
-
-    @Override
-    public void nativeKeyTyped(NativeKeyEvent e) {
-    }
-
-    @Override
-    public void nativeKeyPressed(NativeKeyEvent e) {
-    }
-
-    public void listen() {
-        GlobalScreen.addNativeKeyListener(this);
     }
 }
